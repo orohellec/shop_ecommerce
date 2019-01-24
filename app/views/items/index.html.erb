@@ -1,0 +1,12 @@
+<h1>Tous nos produits</h1>
+
+<% @items.each do |item| %>
+  <div>
+    <%= image_tag item.image_url %>
+    <%= item.title %>
+    <%= item.description %>
+    <%= item.has_discount %>
+    <%= item.discount_percentage %>
+    <%= link_to "voir le produit", item_path(item.id) %>
+  </div>
+<% end %>
