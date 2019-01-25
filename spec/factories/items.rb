@@ -15,7 +15,26 @@
 #  discount_percentage :integer          default(0)
 #
 
+require 'factory_bot_rails'
+require 'faker'
+
 FactoryBot.define do
   factory :item do
+    title { Faker::Pokemon.name }
+    description { Faker::Shakespeare.romeo_and_juliet_quote }
+    original_price { Faker::Number.decimal(2) }
+    has_discount { Faker::Boolean.boolean }
+    discount_percentage { rand(100) }
+
+    trait :with_discount do
+      has_discount { true }
+    end
+
+    trait :without_discount do
+      has_discount { false }
+    end
+
+    factory :item_with_discount, traits: %i[with_discount]
+    factory :item_without_discount, traits: %i[without_discount]
   end
 end
