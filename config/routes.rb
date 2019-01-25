@@ -17,4 +17,12 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
+
+  resources :items, only: %i[index show]
+
+  namespace 'administration' do
+    get 'administration/items', to: 'items#index'
+    post 'administration/items', to: 'items#update'
+    resources :items
+  end
 end
