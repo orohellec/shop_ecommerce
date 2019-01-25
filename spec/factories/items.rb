@@ -15,6 +15,9 @@
 #  discount_percentage :integer          default(0)
 #
 
+require 'factory_bot_rails'
+require 'faker'
+
 FactoryBot.define do
   factory :item do
     title { Faker::Pokemon.name }
