@@ -21,8 +21,6 @@ Rails.application.routes.draw do
   resources :items, only: %i[index show]
 
   namespace 'administration' do
-    get 'administration/items', to: 'items#index'
-    post 'administration/items', to: 'items#update'
     resources :items
   end
 end
