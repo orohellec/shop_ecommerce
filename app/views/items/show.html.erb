@@ -1,0 +1,9 @@
+<h1>The Product</h1>
+
+<%= image_tag @item.image_url %><br>
+<%= @item.title %><br>
+<%= @item.description %><br>
+<%= @item.has_discount %><br>
+<%= @item.discount_percentage %><br>
+
+<%= link_to "retour à la page précédente", items_path %>
