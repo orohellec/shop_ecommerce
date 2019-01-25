@@ -14,7 +14,13 @@
 #  updated_at             :datetime         not null
 #
 
+require 'factory_bot_rails'
+require 'faker'
+
 FactoryBot.define do
   factory :admin do
+    email { Faker::Internet.email }
+    password { "azerty" }
+    password_confirmation { "azerty" }
   end
 end

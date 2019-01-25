@@ -12,6 +12,8 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  first_name             :string           default(""), not null
+#  last_name              :string           default(""), not null
 #
 
 class User < ApplicationRecord
