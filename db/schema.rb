@@ -62,10 +62,7 @@ ActiveRecord::Schema.define(version: 2019_01_24_093828) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-<<<<<<< HEAD
-=======
     t.integer "discount_percentage", default: 0
->>>>>>> master
   end
 
   create_table "orders", force: :cascade do |t|
