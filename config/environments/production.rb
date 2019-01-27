@@ -65,6 +65,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.default_url_options = { :host => "https://ecommerce-next-staging.herokuapp.com/" }
   # Sendgrind
   config.action_mailer.smtp_settings = {
     :user_name => ENV['SENDGRIND_USERNAME'],
