@@ -38,6 +38,11 @@ RSpec.describe User, type: :model do
       it { is_expected.to have_db_column(:first_name).of_type(:string).with_options(default: "", null: false) }
       it { is_expected.to have_db_column(:last_name).of_type(:string).with_options(default: "", null: false) }
     end
+
+    describe 'Associations' do
+      it { is_expected.to have_many(:orders) }
+      it { is_expected.to have_one(:cart) }
+    end
   end
 
   context "with valid Factory" do
