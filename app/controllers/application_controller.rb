@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   layout :layout_by_ressource
+  protect_from_forgery with: :exception
 
   private
 

@@ -7,3 +7,4 @@
 <%= @item.discount_percentage %><br>
 
 <%= link_to "retour à la page précédente", items_path %>
+<%= button_to "Add to cart", cart_items_path(:id => @item), :remote => true %>

@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :items, only: %i[index show]
-
+  resources :cart_items
+  resources :cart
   namespace 'administration' do
     resources :items
   end
