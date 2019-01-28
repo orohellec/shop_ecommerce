@@ -1,0 +1,17 @@
+<% current_user.cart.cart_items.each_with_index do |cart_item, i| %>
+  <p>
+  <b><%= i+1 %>: </b>
+  <%= cart_item.item.title %>
+  <b><%= cart_item.item.original_price %> €</b><br>
+  "<i><%= cart_item.item.description %></i>"
+  <%= form_with(url: cart_item_path(cart_item), method: :patch) do |form| %>
+    <%= form.text_field :quantity, placeholder: "#{cart_item.quantity}" %>
+    <%= form.submit %>
+  <% end %>
+  <%= button_to "Supprimer du panier", cart_item_path(cart_item), :method=>:delete, :remote => true %>
+  </p>
+<% end %>
+<p>
+  Total = 
+  <b><%= current_user.cart.total_price %> €</b>
+</p>
