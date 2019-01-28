@@ -31,6 +31,13 @@ RSpec.describe Item, type: :model do
       it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
       it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
     end
+
+    describe 'Associations' do
+      it { is_expected.to have_many(:cart_items) }
+      it { is_expected.to have_many(:item_orders) }
+      it { is_expected.to have_many(:carts) }
+      it { is_expected.to have_many(:orders) }
+    end
   end
 
   # it "is valid with valid attributes" do
