@@ -40,7 +40,6 @@ RSpec.describe User, type: :model do
     end
 
     describe 'Associations' do
-      it { is_expected.to have_many(:items) }
       it { is_expected.to have_many(:orders) }
       it { is_expected.to have_one(:cart) }
     end
