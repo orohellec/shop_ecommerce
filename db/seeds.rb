@@ -21,13 +21,15 @@
 end
 
 3.times do |i|
-  User.create!(
+  user = User.new(
     first_name: Faker::DragonBall.character,
     last_name: Faker::Artist.name,
     email: "user#{i}@seed.com",
     password: "lalala",
     password_confirmation: "lalala"
   )
+  user.skip_confirmation!
+  user.save!
   puts "User #{i + 1} create"
 end
 

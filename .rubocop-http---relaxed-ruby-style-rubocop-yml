@@ -164,7 +164,3 @@ Metrics/ParameterLists:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'app/controllers/admins/*'
-    - 'app/controllers/users/*'
