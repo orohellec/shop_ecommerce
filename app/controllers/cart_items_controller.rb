@@ -2,7 +2,8 @@
 
 class CartItemsController < ApplicationController
   def create
-    current_user.cart.add_product(params[:id])
+    item = Item.find(params[:id])
+    current_user.cart.add_product(item)
 
     if current_user.cart.save
       redirect_to cart_path(params[:id])
