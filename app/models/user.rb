@@ -31,6 +31,10 @@ class User < ApplicationRecord
 
   after_create :create_cart
 
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
+
   def create_cart
     Cart.create(user: self)
   end
