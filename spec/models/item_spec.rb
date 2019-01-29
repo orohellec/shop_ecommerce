@@ -18,6 +18,12 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
+  describe 'Factory' do
+    it "has a valid factory" do
+      expect(build(:item)).to be_valid
+    end
+  end
+
   describe 'Model instantiation' do
     subject(:new_item) { described_class.new }
 
