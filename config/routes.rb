@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  # need to be securize later (only available for admin)
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   devise_for :admins, path: 'admins', controllers: {
     sessions: 'admins/sessions',
     confirmations: 'admins/confirmations',
