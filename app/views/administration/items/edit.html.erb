@@ -1,0 +1,18 @@
+<h1>Editer un item</h1>
+
+<%=  form_for [:administration, @item] do |f| %>
+  <%= f.label :'image url' %>
+  <%= f.text_field :image_url %><br>
+
+  <%= f.label :'titre' %>
+  <%= f.text_field :title %><br>
+
+  <%= f.label :'description' %>
+  <%= f.text_area :description %><br>
+
+  <%= f.label :'prix' %>
+  <%= f.text_field :original_price %><br>
+  <%= f.submit "Créé" %>
+<% end %>
+
+<%= link_to "Supprimer", administration_item_path(@item.id), method: :delete %>
