@@ -41,7 +41,7 @@ RSpec.describe User, type: :model do
 
     describe 'Associations' do
       it { is_expected.to have_many(:orders) }
-      it { is_expected.to have_one(:cart) }
+      it { is_expected.to have_many(:cart) }
     end
   end
 

@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: carts
@@ -8,6 +7,7 @@
 #  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  status     :integer          default(0)
 #
 
 class Cart < ApplicationRecord
@@ -29,8 +29,4 @@ class Cart < ApplicationRecord
     cart_items.to_a.sum { |i| i.quantity * i.item.original_price }
   end
 
-  def checkout
-    update(status: 1)
-    create_cart
-  end
 end
