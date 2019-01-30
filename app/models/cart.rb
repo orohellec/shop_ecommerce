@@ -28,4 +28,9 @@ class Cart < ApplicationRecord
   def total_price
     cart_items.to_a.sum { |i| i.quantity * i.item.original_price }
   end
+
+  def checkout
+    update(status: 1)
+    create_cart
+  end
 end

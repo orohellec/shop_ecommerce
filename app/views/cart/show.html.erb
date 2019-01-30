@@ -1,4 +1,4 @@
-<% current_user.cart.cart_items.each_with_index do |cart_item, i| %>
+<% current_user.current_cart.cart_items.each_with_index do |cart_item, i| %>
   <p>
   <b><%= i+1 %>: </b>
   <%= cart_item.item.title %>
@@ -13,5 +13,7 @@
 <% end %>
 <p>
   Total = 
-  <b><%= current_user.cart.total_price %> €</b>
+  <b><%= current_user.current_cart.total_price %> €</b>
 </p>
+
+
