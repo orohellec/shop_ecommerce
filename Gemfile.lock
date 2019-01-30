@@ -70,6 +70,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.4)
+    connection_pool (2.2.2)
     crass (1.0.4)
     database_cleaner (1.7.0)
     devise (4.5.0)
@@ -137,6 +138,8 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
+    rack-protection (2.0.5)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.2)
@@ -168,6 +171,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    redis (4.1.0)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
@@ -226,6 +230,11 @@ GEM
       tilt
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
+    sidekiq (5.2.5)
+      connection_pool (~> 2.2, >= 2.2.2)
+      rack (>= 1.5.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -285,12 +294,14 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
   rails (~> 5.2.2)
+  redis
   rspec-rails
   rubocop (~> 0.63.0)
   rubocop-rspec (~> 1.30, >= 1.30.1)
   sandi_meter (~> 1.2)
   sass-rails (~> 5.0)
   shoulda-matchers (~> 3.1)
+  sidekiq
   simplecov (~> 0.16.1)
   spring
   spring-watcher-listen (~> 2.0.0)
