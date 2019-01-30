@@ -8,6 +8,7 @@
 #  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  status     :integer          default(0)
 #
 
 require 'rails_helper'
@@ -44,12 +45,12 @@ RSpec.describe Cart, type: :model do
       before do
         item1 = FactoryBot.create(:item, original_price: 10)
         item2 = FactoryBot.create(:item, original_price: 30)
-        user.cart.add_product(item1)
-        user.cart.add_product(item2)
+        user.current_cart.add_product(item1)
+        user.current_cart.add_product(item2)
       end
 
       it 'returns string 40' do
-        expect(user.cart.total_price).to eq(40)
+        expect(user.current_cart.total_price).to eq(40)
       end
     end
   end
