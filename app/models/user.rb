@@ -26,7 +26,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  has_many :cart, dependent: :destroy
+  has_many :carts, dependent: :destroy
   has_many :orders, dependent: :destroy
 
   after_create :create_cart
@@ -40,7 +40,7 @@ class User < ApplicationRecord
   end
 
   def current_cart
-    cart.find_by(status: 0)
+    carts.find_by(status: 0)
   end
 
   def checkout
