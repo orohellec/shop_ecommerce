@@ -13,8 +13,8 @@
   </p>
 <% end %>
 <p>
-  Total = 
+  Total =
   <b><%= current_user.current_cart.total_price %> €</b>
 </p>
 
-
+<%=link_to "Enregistrer et aller au paiment", new_charge_path, class:"checkout-button"%>

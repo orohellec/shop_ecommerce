@@ -1,11 +1,16 @@
 # frozen_string_literal: true
 
 class ChargesController < ApplicationController
-  def new; end
+  def new
+    @price = current_user.current_cart.total_price
+    # Amount in cents
+    @amount = (@price * 100).to_i
+  end
 
   def create
+    @price = current_user.current_cart.total_price
     # Amount in cents
-    @amount = 500
+    @amount = (@price * 100).to_i
 
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
@@ -18,6 +23,9 @@ class ChargesController < ApplicationController
       description: 'Rails Stripe customer',
       currency: 'usd'
     )
+
+    # Validate current cart and create a new empty one
+    current_user.checkout
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

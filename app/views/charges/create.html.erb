@@ -1,1 +1,8 @@
-<h2>Thanks, you paid <strong>$5.00</strong>!</h2>
+<div class="charge_wrapper">
+  <h2>Merci !</h2><br>
+
+     Vous avez payé, <strong>$<%= @price %></strong><br><br>
+
+    <%=button_to "VOS COMMANDES", edit_user_registration_path, method: :get, class:"charge-button" %>
+
+</div>
