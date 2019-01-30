@@ -15,4 +15,8 @@
 class CartItem < ApplicationRecord
   belongs_to :item
   belongs_to :cart
+
+  def subtotal
+    quantity * item.original_price
+  end
 end
