@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: carts
@@ -28,5 +29,4 @@ class Cart < ApplicationRecord
   def total_price
     cart_items.to_a.sum { |i| i.quantity * i.item.original_price }
   end
-
 end
