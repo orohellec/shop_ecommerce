@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   namespace 'administration' do
     resources :items
   end
+  resources :charges # Stripe
 end
