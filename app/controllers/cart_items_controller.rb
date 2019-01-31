@@ -20,7 +20,12 @@ class CartItemsController < ApplicationController
 
   def update
     @cart_item = CartItem.find(params[:id])
-    @cart_item.update(quantity: params[:quantity])
+    @cart_item.quantity = params[:quantity]
+    if @cart_item.quantity.zero?
+      @cart_item.destroy.save
+    elsif !@cart_item.quantity.nil?
+      @cart_item.save
+    end
     redirect_to cart_path
   end
 end
