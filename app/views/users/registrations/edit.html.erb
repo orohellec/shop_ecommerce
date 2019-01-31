@@ -1,3 +1,37 @@
+<h2>Commandes en cours:</h2>
+<ul>
+  <% if current_user.carts.find_by(status: 1).nil? %>
+    <li>Vous n'avez pas de commande en cours</li>
+  <% else %>
+    <% current_user.carts.where(status: 1).each do |order| %>
+      <li>Order N°<%= order.id %></li>
+      <ul>
+        <% order.cart_items.each do |item| %>
+          <li> <%= item.quantity %> x <%= item.item.title %>: <%= item.subtotal %> €</li>
+        <% end %>
+      <b>Total: <%= order.total_price %> €</b>
+      </ul>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>Commandes terminées:</h2>
+<ul>
+  <% if current_user.carts.find_by(status: 2).nil? %>
+    <li>Vous n'avez pas de commande terminée</li>
+  <% else %>
+    <% current_user.carts.where(status: 2).each do |order| %>
+      <li>Order N°<%= order.id %></li>
+      <ul>
+        <% order.cart_items.each do |item| %>
+          <li> <%= item.quantity %> x <%= item.item.title %>: <%= item.subtotal %> €</li>
+        <% end %>
+      <b>Total: <%= order.total_price %> €</b>
+      </ul>
+    <% end %>
+  <% end %>
+</ul>
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

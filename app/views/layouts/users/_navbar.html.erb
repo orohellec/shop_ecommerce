@@ -17,7 +17,11 @@
               <%= link_to "Se déconnecter", destroy_user_session_path, class: "nav-link", method: :delete %>
             </li>
             <li class="nav-item active">
-              <%= link_to "Panier", cart_path(current_user.id), class: "nav-link" %>
+              <%= link_to "Panier", cart_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Mon compte", edit_user_registration_path, class: "nav-link" %>
+            </li>
           <% else %>
             <li class="nav-item active">
               <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %>

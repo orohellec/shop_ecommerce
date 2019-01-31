@@ -8,7 +8,7 @@
     <%= form.text_field :quantity, placeholder: "#{cart_item.quantity}" %>
     <%= form.submit %>
   <% end %>
-  <b>subtotal: <%= cart_item.subtotal %></b>
+  <b>subtotal: <%= cart_item.subtotal %> € </b>
   <%= button_to "Supprimer du panier", cart_item_path(cart_item), :method=>:delete, :remote => true %>
   </p>
 <% end %>
