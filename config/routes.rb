@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :cart, only: %i[show]
   namespace 'administration' do
     resources :items
+    resources :carts, only: %i[index show update]
   end
   resources :charges # Stripe
 end

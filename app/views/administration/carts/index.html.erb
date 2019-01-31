@@ -1,0 +1,14 @@
+<h1>Voici les commandes</h1>
+
+<% @carts.order("created_at desc").each do |cart| %>
+  <p>Commande passée par <%= cart.user.first_name %> <%= cart.user.last_name %>,
+    le <%= cart.created_at.strftime("%d/%m/%Y") %> à
+    <%= cart.created_at.strftime("%H:%M:%S") %>
+    <% if cart.status == 1 %>
+      "Non traité"
+    <% else %>
+      "Traité"
+    <% end%>
+    <%= link_to "voir", administration_cart_path(cart.id) %>
+  </p>
+<% end %>
