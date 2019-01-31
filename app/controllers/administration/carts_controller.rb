@@ -18,5 +18,11 @@ module Administration
       @cart.save
       redirect_to administration_carts_path
     end
+
+    def destroy
+      @cart = Cart.find(params[:id])
+      @cart.destroy
+      redirect_to administration_carts_path
+    end
   end
 end

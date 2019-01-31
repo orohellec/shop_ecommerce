@@ -24,4 +24,5 @@
 <% else %>
   <%= button_to "Marquez cette commande comme non traité", administration_cart_path(@cart.id), params: {status: 1}, method: :patch %>
 <% end %><br>
-  <%= link_to "Retour à la page précédente", administration_carts_path %>
+  <%= link_to "Retour à la page précédente", administration_carts_path %><br><br>
+  <%= link_to "Supprimer la commande", administration_cart_path(@cart.id), method: :delete %>
