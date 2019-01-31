@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
     current_user.current_cart.add_product(item)
 
     if current_user.current_cart.save
-      redirect_to cart_path(params[:id])
+      redirect_to cart_path
     else
       flash[:error] = 'There was a problem adding this item to your cart.'
       redirect_to @product

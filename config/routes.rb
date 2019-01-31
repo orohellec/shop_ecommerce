@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'home#index'
 
+  get '/cart', to: 'cart#show'
   resources :items, only: %i[index show]
   resources :cart_items, only: %i[create update destroy]
-  resources :cart, only: %i[show]
   namespace 'administration' do
     resources :items
   end
