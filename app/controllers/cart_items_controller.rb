@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
     current_user.current_cart.add_product(item)
 
     if current_user.current_cart.save
-      redirect_to cart_path(params[:id])
+      redirect_to cart_path
     else
       flash[:error] = 'There was a problem adding this item to your cart.'
       redirect_to @product
@@ -20,7 +20,12 @@ class CartItemsController < ApplicationController
 
   def update
     @cart_item = CartItem.find(params[:id])
-    @cart_item.update(quantity: params[:quantity])
+    @cart_item.quantity = params[:quantity]
+    if @cart_item.quantity.zero?
+      @cart_item.destroy.save
+    elsif !@cart_item.quantity.nil?
+      @cart_item.save
+    end
     redirect_to cart_path
   end
 end

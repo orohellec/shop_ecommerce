@@ -8,13 +8,13 @@
     <%= form.text_field :quantity, placeholder: "#{cart_item.quantity}" %>
     <%= form.submit %>
   <% end %>
-  <b>subtotal: <%= cart_item.subtotal %></b>
+  <b>subtotal: <%= cart_item.subtotal %> € </b>
   <%= button_to "Supprimer du panier", cart_item_path(cart_item), :method=>:delete, :remote => true %>
   </p>
 <% end %>
 <p>
-  Total = 
+  Total =
   <b><%= current_user.current_cart.total_price %> €</b>
 </p>
 
-
+<%=link_to "Enregistrer et aller au paiment", new_charge_path, class:"checkout-button"%>
