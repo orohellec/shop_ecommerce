@@ -15,6 +15,11 @@ module Administration
     def create
       @item = Item.new(item_parameters)
       @item.save
+      if @item.save
+        flash[:notice] = "Nouvel article créé"
+      else
+        flash[:alert] = "Vous devez au moins renseigner un titre et un prix"
+      end
       redirect_to administration_items_path
     end
 
@@ -25,6 +30,11 @@ module Administration
     def update
       @item = Item.find(params[:id])
       @item.update(item_parameters)
+      if @item.save
+        flash[:notice] = "L'article a bien été édité"
+      else
+        flash[:alert] = "Vous devez au moins renseigner un titre et un prix"
+      end
       redirect_to administration_items_path
     end
 
@@ -37,6 +47,7 @@ module Administration
       # we had a trouble at the last minute so for the moment I let this update
       # method here
       @item.update(on_sale: 0)
+      flash[:notice] = "L'article n'est plus en vente"
       redirect_to administration_items_path
     end
 
