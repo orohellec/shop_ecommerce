@@ -39,6 +39,10 @@ class User < ApplicationRecord
     Cart.create(user: self)
   end
 
+  # Status column can have 3 states:
+  # 0: Current user cart
+  # 1: Paid order, waiting admin confirmation
+  # 2: Closed order, paid by user and shipped by admin
   def current_cart
     carts.find_by(status: 0)
   end
@@ -46,5 +50,9 @@ class User < ApplicationRecord
   def checkout
     current_cart.update(status: 1)
     create_cart
+  end
+
+  def close_order(id)
+    carts.find(id).update(status: 2)
   end
 end
