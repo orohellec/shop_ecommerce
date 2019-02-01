@@ -35,13 +35,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @items.each do |item|%>
+                  <% @items.each do |items|%>
                     <tr>
-                      <td><%= item.id %></td>
-                      <td><%= item.title %></td>
-                      <td><%= item.original_price %> €</td>
-                      <td><%= @cart_item.find_by(item_id: item.id).quantity %></td>
-                      <td><%= item.original_price * @cart_item.find_by(item_id: item.id).quantity %></td>
+                      <td><%= items.item.id %></td>
+                      <td><%= items.item.title %></td>
+                      <td><%= items.item.original_price %> €</td>
+                      <td><%= items.quantity %></td>
+                      <td><%= items.subtotal %></td>
                     </tr>
                   <% end %>
                 </tbody>
@@ -49,7 +49,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </main>
   </div>

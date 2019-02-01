@@ -10,20 +10,25 @@ module Administration
 
     def show
       @cart = Cart.find(params[:id])
-      @items = @cart.items
-      @cart_item = CartItem.all.where(cart_id: @cart.id)
+      @items = @cart.cart_items
     end
 
     def update
       @cart = Cart.find(params[:id])
       @cart.update(status: params[:status])
-      @cart.save
+      if @cart.status == 1
+        @cart.save
+        flash[:notice] = "Commande mise à jour comme non traitée"
+      elsif @cart.status == 2
+        flash[:notice] = "Commande mise à jour comme traitée"
+      end
       redirect_to administration_carts_path
     end
 
     def destroy
       @cart = Cart.find(params[:id])
       @cart.destroy
+      flash[:notice] = "Commande supprimée"
       redirect_to administration_carts_path
     end
   end
