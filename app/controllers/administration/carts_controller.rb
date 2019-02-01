@@ -17,13 +17,19 @@ module Administration
     def update
       @cart = Cart.find(params[:id])
       @cart.update(status: params[:status])
-      @cart.save
+      if @cart.status == 1
+        @cart.save
+        flash[:notice] = "Commande mise à jour comme non traitée"
+      elsif @cart.status == 2
+        flash[:notice] = "Commande mise à jour comme traitée"
+      end
       redirect_to administration_carts_path
     end
 
     def destroy
       @cart = Cart.find(params[:id])
       @cart.destroy
+      flash[:notice] = "Commande supprimée"
       redirect_to administration_carts_path
     end
   end
