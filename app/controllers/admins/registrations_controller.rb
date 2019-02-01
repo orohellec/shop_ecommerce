@@ -8,7 +8,7 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    super
+    redirect_to root_path
   end
 
   # POST /resource
