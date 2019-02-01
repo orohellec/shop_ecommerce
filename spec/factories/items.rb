@@ -9,7 +9,6 @@
 #  description         :text
 #  original_price      :decimal(, )
 #  has_discount        :boolean          default(FALSE)
-#  on_sale             :boolean          default(TRUE)
 #  image_url           :string
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
