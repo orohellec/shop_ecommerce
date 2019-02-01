@@ -2,7 +2,7 @@
 
 class CartItemsController < ApplicationController
   def create
-    if user_signed_in? == false
+    if !user_signed_in?
       redirect_to new_user_registration_path
       flash[:alert] = "Vous devez être connecté pour ajouter des articles à votre panier"
     else

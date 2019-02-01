@@ -1,3 +1,9 @@
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Orders')">Historique des commandes</button>
+  <button class="tablinks" onclick="openCity(event, 'Edit')">Modifier ses informations</button>
+</div>
+
+<div id="Orders" class="tabcontent">
 <h2>Commandes en cours:</h2>
 <ul>
   <% if current_user.carts.find_by(status: 1).nil? %>
@@ -31,6 +37,9 @@
     <% end %>
   <% end %>
 </ul>
+</div>
+
+<div id="Edit" class="tabcontent">
 
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
@@ -85,3 +94,4 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>
