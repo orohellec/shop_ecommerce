@@ -29,6 +29,7 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
     - 'Guardfile'
     - 'vendor/bundle'
+    - 'config/routes.rb'
 
 Style/ClassAndModuleChildren:
   Exclude:

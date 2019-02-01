@@ -2,6 +2,8 @@
 
 module Administration
   class CartsController < AdministrationController
+    before_action :authenticate_admin!
+
     def index
       @carts = Cart.all.where(status: 1).or(Cart.all.where(status: 2))
     end

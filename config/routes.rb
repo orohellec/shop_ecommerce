@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   # need to be securize later (only available for admin)
   require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  authenticate :admin do
+    mount Sidekiq::Web => 'administration/sidekiq'
+  end
 
   devise_for :admins, path: 'admins', controllers: {
     sessions: 'admins/sessions',
