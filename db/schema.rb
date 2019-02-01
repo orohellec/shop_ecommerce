@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_01_30_135523) do
     t.text "description"
     t.decimal "original_price"
     t.boolean "has_discount", default: false
+    t.boolean "on_sale", default: true
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

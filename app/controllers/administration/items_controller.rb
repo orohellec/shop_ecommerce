@@ -5,7 +5,7 @@ module Administration
     before_action :authenticate_admin!
 
     def index
-      @items = Item.all
+      @items = Item.all.where(on_sale: 1)
     end
 
     def new
@@ -34,7 +34,9 @@ module Administration
 
     def destroy
       @item = Item.find(params[:id])
-      @item.delete
+      # we had a trouble at the last minute so for the moment I let this update
+      # method here
+      @item.update(on_sale: 0)
       redirect_to administration_items_path
     end
 

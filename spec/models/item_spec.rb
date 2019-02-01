@@ -33,6 +33,7 @@ RSpec.describe Item, type: :model do
       it { is_expected.to have_db_column(:description).of_type(:text) }
       it { is_expected.to have_db_column(:original_price).of_type(:decimal) }
       it { is_expected.to have_db_column(:has_discount).of_type(:boolean).with_options(default: false) }
+      it { is_expected.to have_db_column(:on_sale).of_type(:boolean).with_options(default: true) }
       it { is_expected.to have_db_column(:discount_percentage).of_type(:integer).with_options(default: 0) }
       it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
       it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
