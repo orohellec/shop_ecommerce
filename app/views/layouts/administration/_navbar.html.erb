@@ -25,9 +25,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a href="<%= destroy_admin_session_path %>" class="sidebar-link">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Me déconnecter</span>
-            </a>
+              <%= link_to "Se déconnecter", destroy_admin_session_path, class: "navbar-brand", method: :delete %>
           </li>
       </div>
     </nav>
