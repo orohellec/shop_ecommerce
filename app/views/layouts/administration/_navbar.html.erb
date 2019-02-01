@@ -1,8 +1,35 @@
 <% if admin_signed_in? %>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <%= link_to "Mes produits", administration_items_path, class: "navbar-brand" %>
-    <%= link_to "Mes commandes", administration_carts_path, class: "navbar-brand" %>
-    <%= link_to "Se déconnecter", destroy_admin_session_path, class: "navbar-brand", method: :delete %>
-    <%= current_admin.email %>
-  </nav>
+
+<div class="wrapper">
+  <div class="d-flex">
+    <nav class="sidebar">
+      <div class="sidebar-content">
+        <p class="sidebar-brand">
+          <i class="align-middle" data-feather="box"></i>
+          <span class="align-middle">ADMIN</span>
+        </p>
+
+        <ul class="sidebar-nav">
+          <li class="sidebar-header">
+            <%= current_admin.email %>
+          </li>
+          <li class="sidebar-item">
+            <a href="<%= administration_carts_path %>" class="sidebar-link">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Mes commandes</span>
+              <!-- <span class="sidebar-badge badge badge-primary">6</span> -->
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="<%= administration_items_path %>" class="sidebar-link">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Mes produits</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="<%= destroy_admin_session_path %>" class="sidebar-link">
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Me déconnecter</span>
+            </a>
+          </li>
+      </div>
+    </nav>
+
 <% end %>
