@@ -2,7 +2,6 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <%= link_to "Mes produits", administration_items_path, class: "navbar-brand" %>
     <%= link_to "Mes commandes", administration_carts_path, class: "navbar-brand" %>
-    <%= link_to "Sidekiq", sidekiq_web_path, class: "navbar-brand", target: :_blank  %>
     <%= link_to "Se déconnecter", destroy_admin_session_path, class: "navbar-brand", method: :delete %>
     <%= current_admin.email %>
   </nav>
