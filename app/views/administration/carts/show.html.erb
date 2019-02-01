@@ -1,0 +1,28 @@
+<h1>Une commande</h1>
+
+<div>
+  <p>Client: <%= @cart.user.first_name %> <%= @cart.user.last_name %></p>
+  <p>Date: <%= @cart.created_at.strftime("%d/%m/%Y") %></p>
+  <p>Heure: <%= @cart.created_at.strftime("%H:%M:%S") %></p>
+</div>
+
+<div>
+  <% @items.each do |item|%>
+    Nom: <%= item.title %>,
+    Prix unitaire: <%= item.original_price %> €
+    Quantité: <%= @cart_item.find_by(item_id: item.id).quantity %>
+    Prix: <%= item.original_price * @cart_item.find_by(item_id: item.id).quantity %>
+  <% end %>
+<div>
+
+<div>
+  Prix total: <%= @cart.total_price %>
+</div><br>
+
+<% if @cart.status == 1 %>
+  <%= button_to "Marquez cette commande comme traité", administration_cart_path(@cart.id), params: {status: 2}, method: :patch %>
+<% else %>
+  <%= button_to "Marquez cette commande comme non traité", administration_cart_path(@cart.id), params: {status: 1}, method: :patch %>
+<% end %><br>
+  <%= link_to "Retour à la page précédente", administration_carts_path %><br><br>
+  <%= link_to "Supprimer la commande", administration_cart_path(@cart.id), method: :delete %>
