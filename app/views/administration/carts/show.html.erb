@@ -7,11 +7,11 @@
 </div>
 
 <div>
-  <% @items.each do |item|%>
-    Nom: <%= item.title %>,
-    Prix unitaire: <%= item.original_price %> €
-    Quantité: <%= @cart_item.find_by(item_id: item.id).quantity %>
-    Prix: <%= item.original_price * @cart_item.find_by(item_id: item.id).quantity %>
+  <% @items.each do |items|%>
+    Nom: <%= items.item.title %>,
+    Prix unitaire: <%= items.item.original_price %> €
+    Quantité: <%= items.quantity %>
+    Prix: <%= items.subtotal %>
   <% end %>
 <div>
 
