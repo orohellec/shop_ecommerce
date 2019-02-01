@@ -10,8 +10,7 @@ module Administration
 
     def show
       @cart = Cart.find(params[:id])
-      @items = @cart.items
-      @cart_item = CartItem.all.where(cart_id: @cart.id)
+      @items = @cart.cart_items
     end
 
     def update
