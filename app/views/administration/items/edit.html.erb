@@ -1,18 +1,37 @@
-<h1>Editer un item</h1>
+<body>
+  <div class="main">
+    <main class="content">
+      <div class="container-fluid p-0">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h1 class="card-title mb-0">Edition du produit n°<%= @item.id %> : <%= @item.title %></h1>
+              </div>
+              <div class="card-body">
+                <div id="introduction">
+                  <%=  form_for [:administration, @item] do |f| %>
 
-<%=  form_for [:administration, @item] do |f| %>
-  <%= f.label :'image url' %>
-  <%= f.text_field :image_url %><br>
+                    <%= f.label :'titre' %>
+                    <%= f.text_field :title %><br>
 
-  <%= f.label :'titre' %>
-  <%= f.text_field :title %><br>
+                    <%= f.label :'image url' %>
+                    <%= f.text_field :image_url %><br>
 
-  <%= f.label :'description' %>
-  <%= f.text_area :description %><br>
+                    <%= f.label :'description' %>
+                    <%= f.text_area :description %><br>
 
-  <%= f.label :'prix' %>
-  <%= f.text_field :original_price %><br>
-  <%= f.submit "Créé" %>
-<% end %>
-
-<%= link_to "Retirer ce produit de la vente", administration_item_path(@item.id), method: :delete %>
+                    <%= f.label :'prix' %>
+                    <%= f.text_field :original_price %><br>
+                    <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+                    <%= link_to "Retirer ce produit de la vente", administration_item_path(@item.id), method: :delete, class: "btn btn-danger" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
