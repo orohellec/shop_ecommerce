@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.text :description
       t.decimal :original_price
       t.boolean :has_discount, default: false
+      t.boolean :on_sale, default: 1
       t.string :image_url
 
       t.timestamps
