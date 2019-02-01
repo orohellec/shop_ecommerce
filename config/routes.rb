@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   # need to be securize later (only available for admin)
   require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
+  authenticate :admin do
+    mount Sidekiq::Web => 'administration/sidekiq'
+  end
 
   devise_for :admins, path: 'admins', controllers: {
     sessions: 'admins/sessions',
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: %i[create update destroy]
   namespace 'administration' do
     resources :items
+    resources :carts
   end
   resources :charges # Stripe
 end
