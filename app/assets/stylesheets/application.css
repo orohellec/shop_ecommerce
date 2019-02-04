@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-body { padding-right: 0 !important }
+.nav-link {
+	cursor: pointer;
+}
 
 .modal-open .modal {
     overflow-x: auto;
