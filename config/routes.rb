@@ -28,7 +28,13 @@ Rails.application.routes.draw do
   resources :items, only: %i[index show]
   resources :cart_items, only: %i[create update destroy]
   namespace 'administration' do
-    resources :items
+    resources :items, except: %i[destroy] do
+      member do
+        post :update_sales_status
+        patch :update_sales_status
+        put :update_sales_status
+      end
+    end
     resources :carts
   end
   resources :charges # Stripe

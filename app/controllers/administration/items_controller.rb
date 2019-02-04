@@ -5,7 +5,7 @@ module Administration
     before_action :authenticate_admin!
 
     def index
-      @items = Item.all
+      @items = Item.all.where(on_sale: 1)
     end
 
     def new
@@ -38,15 +38,15 @@ module Administration
       redirect_to administration_items_path
     end
 
-    def show
+    def update_sales_status
       @item = Item.find(params[:id])
+      @item.update(on_sale: 0)
+      flash[:notice] = "L'article n'est plus en vente"
+      redirect_to administration_items_path
     end
 
-    def destroy
+    def show
       @item = Item.find(params[:id])
-      @item.delete
-      flash[:notice] = "L'article a bien été supprimé"
-      redirect_to administration_items_path
     end
 
     private
