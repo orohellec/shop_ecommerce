@@ -38,17 +38,15 @@ module Administration
       redirect_to administration_items_path
     end
 
-    def show
+    def update_sales_status
       @item = Item.find(params[:id])
-    end
-
-    def destroy
-      @item = Item.find(params[:id])
-      # we had a trouble at the last minute so for the moment I let this update
-      # method here
       @item.update(on_sale: 0)
       flash[:notice] = "L'article n'est plus en vente"
       redirect_to administration_items_path
+    end
+
+    def show
+      @item = Item.find(params[:id])
     end
 
     private
