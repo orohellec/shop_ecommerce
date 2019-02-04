@@ -24,7 +24,9 @@
                     <%= f.label :'prix' %>
                     <%= f.text_field :original_price %><br>
                     <%= f.submit "Enregistrer", class: "btn btn-primary" %>
-                    <%= link_to "Retirer ce produit de la vente", administration_item_path(@item.id), method: :delete, class: "btn btn-danger" %>
+                    <%= link_to "Retirer ce produit de la vente",
+                        update_sales_status_administration_item_path(@item.id), method: :update_sales_status,
+                        class: "btn btn-danger" %>
                   <% end %>
                 </div>
               </div>
