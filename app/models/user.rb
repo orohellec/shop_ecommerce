@@ -44,15 +44,15 @@ class User < ApplicationRecord
   # 1: Paid order, waiting admin confirmation
   # 2: Closed order, paid by user and shipped by admin
   def current_cart
-    carts.find_by(status: 0)
+    carts.find_by(status: "created")
   end
 
   def checkout
-    current_cart.update(status: 1)
+    current_cart.update(status: "paid")
     create_cart
   end
 
   def close_order(id)
-    carts.find(id).update(status: 2)
+    carts.find(id).update(status: "processed")
   end
 end
