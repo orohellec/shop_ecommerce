@@ -23,7 +23,7 @@
                 <%= f.number_field :original_price, class: "text_field", step: 0.01 %><br><br><br>
                 <%= f.submit "Enregistrer", class: "btn btn-primary" %>
                 <%= link_to "Voir en tant qu'acheteur", item_path(@item.id), class: "btn btn-secondary", target: :_blank %>
-                <%= link_to "Retirer ce produit de la vente", administration_item_path(@item.id), method: :delete, class: "btn btn-danger" %>
+                <%= link_to "Retirer ce produit de la vente", update_sales_status_administration_item_path(@item.id), method: :update_sales_status, class: "btn btn-danger" %>
               <% end %>
             </div>
           </div>

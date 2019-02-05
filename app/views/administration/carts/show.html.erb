@@ -11,7 +11,7 @@
               <p>Prix total de la commande : <%= @cart.total_price %></p>
               <p>Date: <%= @cart.created_at.strftime("%d/%m/%Y") %></p>
               <p>Heure: <%= @cart.created_at.strftime("%H:%M:%S") %></p>
-              <% if @cart.status == 1 %>
+              <% if @cart.paid? %>
                 <%= link_to "Marquez cette commande comme traitée", administration_cart_path(@cart.id), method: :patch, class: "btn btn-success" %>
               <% else %>
                 <%= link_to "Marquez cette commande comme non traitée", administration_cart_path(@cart.id), method: :patch, class: "btn btn-warning" %>

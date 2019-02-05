@@ -5,7 +5,7 @@ module Administration
     before_action :authenticate_admin!
 
     def index
-      @carts = Cart.all.where(status: 1).or(Cart.all.where(status: 2))
+      @carts = Cart.all.where(status: %i[paid processed])
     end
 
     def show
@@ -15,12 +15,12 @@ module Administration
 
     def update
       @cart = Cart.find(params[:id])
-      if @cart.status == 1
-        @cart.update(status: 2)
+      if @cart.paid?
+        @cart.update(status: :processed)
         @cart.save
         flash[:notice] = "Commande mise à jour comme traitée"
-      elsif @cart.status == 2
-        @cart.update(status: 1)
+      else # @cart.processed?
+        @cart.update(status: :paid)
         flash[:notice] = "Commande mise à jour comme non traitée"
       end
       redirect_to administration_carts_path
