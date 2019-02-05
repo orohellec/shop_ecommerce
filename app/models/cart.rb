@@ -8,13 +8,15 @@
 #  user_id    :bigint(8)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  status     :integer          default(0)
+#  status     :integer          default("created")
 #
 
 class Cart < ApplicationRecord
   belongs_to :user
   has_many :cart_items, dependent: :destroy
   has_many :items, through: :cart_items
+
+  enum status: { created: 0, paid: 1, processed: 2 }
 
   def add_product(item)
     current_item = cart_items.find_by(item_id: item.id)

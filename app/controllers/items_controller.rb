@@ -2,7 +2,7 @@
 
 class ItemsController < ApplicationController
   def index
-    @items = Item.all.where(on_sale: 1)
+    @items = Item.all.where(on_sale: true)
   end
 
   def show
