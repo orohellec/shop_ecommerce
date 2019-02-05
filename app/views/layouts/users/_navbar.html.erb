@@ -19,11 +19,11 @@
               <%= link_to "Mon compte", edit_user_registration_path, class: "nav-link" %>
             </li>
           <% else %>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a data-toggle="modal" data-target="#logInModal" class="nav-link">Se connecter</a>
             </li>
             <li class="nav-item active">
-              <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %>
+              <a data-toggle="modal" data-target="#signUpModal" class="nav-link">S'inscrire</a>
             </li>
           
           <% end %>
