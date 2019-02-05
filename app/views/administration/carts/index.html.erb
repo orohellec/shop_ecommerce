@@ -1,47 +1,44 @@
-<body>
-  <div class="main">
-    <main class="content">
-      <div class="container-fluid p-0">
-        <div class="clearfix">
-          <h1 class="h3 mb-3">Mes commandes</h1>
-        </div>
+<main class="content">
+  <div class="container-fluid p-0">
 
-        <div class="row">
-          <div class="col-12">
-            <div class="card flex-fill">
-              <table class="table table-striped my-0">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Nom du client</th>
-                    <th>Date</th>
-                    <th>Etat</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @carts.order("created_at desc").each do |cart| %>
-                    <tr>
-                      <td><%= cart.id %></td>
-                      <td><%= cart.user.first_name %> <%= cart.user.last_name %></td>
-                      <td>le <%= cart.updated_at.strftime("%d/%m/%Y") %> à
-                      <%= cart.updated_at.strftime("%H:%M:%S") %></td>
-                      <td><% if cart.paid? %>
-                        "Non traité"
-                      <% else %>
-                        "Traité"
-                      <% end%>
-                      </td>
-                      <td><%= link_to "voir", administration_cart_path(cart.id) %></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+    <div class="clearfix">
+      <h1 class="h3 mb-3">Mes commandes</h1>
+    </div>
 
+    <div class="row">
+      <div class="col-12">
+        <div class="card flex-fill">
+          <table class="table table-striped my-0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nom du client</th>
+                <th>Date</th>
+                <th>Etat</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @carts.order("created_at desc").each do |cart| %>
+                <tr>
+                  <td><%= cart.id %></td>
+                  <td><%= cart.user.first_name %> <%= cart.user.last_name %></td>
+                  <td>le <%= cart.updated_at.strftime("%d/%m/%Y") %> à
+                  <%= cart.updated_at.strftime("%H:%M:%S") %></td>
+                  <td><% if cart.paid? %>
+                    Non traitée
+                  <% else %>
+                    Traitée
+                  <% end%>
+                  </td>
+                  <td><%= link_to "voir", administration_cart_path(cart.id) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </main>
+    </div>
+
   </div>
-</body>
+</main>

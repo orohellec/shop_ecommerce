@@ -1,43 +1,37 @@
-<body>
-  <div class="main">
-    <main class="content">
-      <div class="container-fluid p-0">
-        <div class="clearfix">
-          <form class="form-inline float-right mt--1 d-none d-md-flex">
-            <a href="<%= new_administration_item_path %>" class="btn btn-primary"><i class="align-middle" data-feather="plus"></i>Nouveau produit</a>
-          </form>
-          <h1 class="h3 mb-3">Mes produits</h1>
-        </div>
+<main class="content">
+  <div class="container-fluid p-0">
+    <div class="clearfix">
+      <form class="form-inline float-right mt--1 d-none d-md-flex">
+        <a href="<%= new_administration_item_path %>" class="btn btn-primary"><i class="align-middle" data-feather="plus"></i>Nouveau produit</a>
+      </form>
+      <h1 class="h3 mb-3">Mes produits</h1>
+    </div>
 
-        <div class="row">
-          <div class="col-12">
-            <div class="card flex-fill">
-              <table class="table table-striped my-0">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Nom</th>
-                    <th>Prix</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @items.each do |item| %>
-                    <tr>
-                      <td><%= item.id %></td>
-                      <td><%= item.title %></td>
-                      <td><%= item.original_price %></td>
-                      <td><%= link_to "Voir", item_path(item.id) %></td>
-                      <td><%= link_to "Editer", edit_administration_item_path(item.id) %></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card flex-fill">
+          <table class="table table-striped my-0">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @items.each do |item| %>
+                <tr>
+                  <td><%= item.id %></td>
+                  <td><%= item.title %></td>
+                  <td><%= item.original_price %></td>
+                  <td><%= link_to "Editer", edit_administration_item_path(item.id) %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
-    </main>
+    </div>
   </div>
-</body>
+</main>

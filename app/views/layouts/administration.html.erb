@@ -19,7 +19,9 @@
 
   <body>
     <%= render partial: "layouts/administration/navbar"%>
+    <div class="main">
     <%= render "layouts/administration/flash_messages" %>
     <%= yield %>
+    </div>
   </body>
 </html>

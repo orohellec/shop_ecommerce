@@ -1,0 +1,30 @@
+
+@media all and (min-device-width: 1px) and (max-device-width: 544px) {
+  .card-text {
+    font-size: 50px;
+  }
+}
+
+@media all and (min-device-width: 545px) and (max-device-width: 768px) {
+  .card-text {
+    font-size: 30px;
+  }
+}
+
+@media all and (min-device-width: 769px) and (max-device-width: 992px) {
+  .card-text {
+    font-size: 20px;
+  }
+}
+
+@media all and (min-device-width: 993px) {
+  .card-text {
+    font-size: 18px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .card-img-top !important {
+    width: 50%;
+  }
+}

@@ -12,9 +12,5 @@
  *
  *= require_tree .
  *= require_self
- *= require template_admin
  */
-
-input[type=text], textarea, select {
-  width: 100%;
-}
+@import "components/*";
