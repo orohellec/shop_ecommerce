@@ -21,5 +21,8 @@
     <%= render partial: "layouts/users/navbar"%>
     <%= render "layouts/users/flash_messages" %>
     <%= yield %>
+    <% unless user_signed_in? %>
+      <%= render partial: 'users/sessions/new' %>
+    <% end %>
   </body>
 </html>

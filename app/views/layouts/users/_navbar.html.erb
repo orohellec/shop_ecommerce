@@ -1,15 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to "Accueil", root_path, class: "navbar-brand" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Nos produits", items_path, class: "navbar-brand" %>
-      </li>
-    </ul>
-    <div>
-      <ul class="navbar-nav mr-auto">
+    <div class="container">
+      <%= link_to "Les Remotiens Shop", root_path, class: "navbar-brand" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item active">
               <span class="nav-link"><%= current_user.first_name + " " + current_user.last_name %></span></li>
@@ -23,14 +19,15 @@
               <%= link_to "Mon compte", edit_user_registration_path, class: "nav-link" %>
             </li>
           <% else %>
+            <li class="nav-item">
+              <a data-toggle="modal" data-target="#logInModal" class="nav-link">Se connecter</a>
+            </li>
             <li class="nav-item active">
               <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %>
             </li>
-            <li class="nav-item active">
-              <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
-            </li>
+          
           <% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
