@@ -1,39 +1,34 @@
-<body>
-  <div class="main">
-    <main class="content">
-      <div class="container-fluid p-0">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h1 class="card-title mb-0">Edition du produit n°<%= @item.id %> : <%= @item.title %></h1>
-              </div>
-              <div class="card-body">
-                <div id="introduction">
-                  <%=  form_for [:administration, @item] do |f| %>
+<main class="content">
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h1 class="card-title mb-0">Produit n°<%= @item.id %> : <%= @item.title %></h1>
+          </div>
+          <div class="card-body">
+            <div id="introduction">
+              <%=  form_for [:administration, @item] do |f| %>
 
-                    <%= f.label :'titre' %>
-                    <%= f.text_field :title %><br>
+                <b><%= f.label :'Nom du produit' %></b><br>
+                <%= f.text_field :title %><br><br>
 
-                    <%= f.label :'image url' %>
-                    <%= f.text_field :image_url %><br>
+                <b><%= f.label :"Url de l'image" %></b><br>
+                <%= f.text_field :image_url %><br><br>
 
-                    <%= f.label :'description' %>
-                    <%= f.text_area :description %><br>
+                <b><%= f.label :'Description du produit' %></b><br>
+                <%= f.text_area :description %><br><br>
 
-                    <%= f.label :'prix' %>
-                    <%= f.text_field :original_price %><br>
-                    <%= f.submit "Enregistrer", class: "btn btn-primary" %>
-                    <%= link_to "Retirer ce produit de la vente",
-                        update_sales_status_administration_item_path(@item.id), method: :update_sales_status,
-                        class: "btn btn-danger" %>
-                  <% end %>
-                </div>
-              </div>
+                <b><%= f.label :'Prix' %></b><br>
+                <%= f.number_field :original_price, class: "text_field", step: 0.01 %><br><br><br>
+                <%= f.submit "Enregistrer", class: "btn btn-primary" %>
+                <%= link_to "Voir en tant qu'acheteur", item_path(@item.id), class: "btn btn-secondary", target: :_blank %>
+                <%= link_to "Retirer ce produit de la vente", update_sales_status_administration_item_path(@item.id), method: :update_sales_status, class: "btn btn-danger" %>
+              <% end %>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   </div>
-</body>
+</main>

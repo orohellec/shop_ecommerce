@@ -15,12 +15,14 @@ module Administration
 
     def update
       @cart = Cart.find(params[:id])
-      @cart.update(status: params[:status])
-      flash[:notice] = if @cart.paid?
-                         "Commande mise à jour comme non traitée"
-                       else # cart.processed?
-                         "Commande mise à jour comme traitée"
-                       end
+      if @cart.paid?
+        @cart.update(status: :processed)
+        @cart.save
+        flash[:notice] = "Commande mise à jour comme traitée"
+      else # @cart.processed?
+        @cart.update(status: :paid)
+        flash[:notice] = "Commande mise à jour comme non traitée"
+      end
       redirect_to administration_carts_path
     end
 

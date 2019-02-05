@@ -4,6 +4,7 @@
   <div class="d-flex">
     <nav class="sidebar">
       <div class="sidebar-content">
+
         <p class="sidebar-brand">
           <i class="align-middle" data-feather="box"></i>
           <span class="align-middle">ADMIN</span>
@@ -25,8 +26,10 @@
             </a>
           </li>
           <li class="sidebar-item">
-              <%= link_to "Se déconnecter", destroy_admin_session_path, class: "navbar-brand", method: :delete %>
+            <%= link_to "Se déconnecter", destroy_admin_session_path, method: :delete, class: "sidebar-link" %>
           </li>
+        </ul>
+
       </div>
     </nav>
 
