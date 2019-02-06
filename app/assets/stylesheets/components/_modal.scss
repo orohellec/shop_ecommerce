@@ -1,16 +1,63 @@
-.modal-open .modal {
-    overflow-x: auto;
-    overflow-y: scroll !important ;
+.input-group:hover {
+	box-shadow: 1px 1px 4px #cecece;
+	transition: 0.2s;
 }
 
-.modal {
-text-align: center;
+.modal-title {
+  color: white;
+  padding-left: 1.2em;
 }
 
-.modal-links {
-  text-align: justify;
+.modal-header{
+  border-radius: 0rem !important;
+}
+.modal-header.text-center{
+  background-color: #343a40;
+  color: #fff;
 }
 
-div .modal-content {
-	width: 400px;
+.form-control:focus{
+  outline: none;
+}
+
+.btn.btn-outline-primary.btn-lg{
+    background-color: #7cd6be;
+    color: #fff;
+    padding: 0.2em 3em;
+    border-radius: 35px;
+    border: solid #7cd6be 2px;
+    font-size: 1em;
+
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+.btn.btn-outline-primary.btn-lg:hover{
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.16);
+    background-color: #343a40;
+    border: solid #343a40 2px;
+    cursor: pointer;
+
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+.close span {
+  color: white;
+}
+
+.remember-me{
+  color: rgb(108, 117, 124);
+}
+
+.modal-logo{
+	width: 50%;
+	height: auto;
+	margin-bottom: -2em;
+	margin: auto;
+	margin-top: 2em;
 }

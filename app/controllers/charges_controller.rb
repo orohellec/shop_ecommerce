@@ -26,6 +26,9 @@ class ChargesController < ApplicationController
 
     # Validate current cart and create a new empty one
     current_user.checkout
+    # Deliver the signup email
+    OrderMailer.user_order_email(current_user).deliver
+    OrderMailer.admin_order_email(current_user).deliver
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

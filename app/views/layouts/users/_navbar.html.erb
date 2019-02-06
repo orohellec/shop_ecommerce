@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <div class="container">
       <%= link_to "Les Remotiens Shop", root_path, class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,15 +19,15 @@
               <%= link_to "Mon compte", edit_user_registration_path, class: "nav-link" %>
             </li>
           <% else %>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a data-toggle="modal" data-target="#logInModal" class="nav-link">Se connecter</a>
             </li>
             <li class="nav-item active">
-              <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %>
+              <a data-toggle="modal" data-target="#signUpModal" class="nav-link">S'inscrire</a>
             </li>
           
           <% end %>
         </ul>
       </div>
     </div>
-  </nav>
+</nav>

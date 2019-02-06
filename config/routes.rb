@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :items, only: %i[index show]
   resources :cart_items, only: %i[create update destroy]
   namespace 'administration' do
-    resources :items, except: %i[destroy] do
+    resources :items, except: %i[show destroy] do
       member do
         post :update_sales_status
         patch :update_sales_status

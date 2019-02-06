@@ -21,9 +21,13 @@
     <div class="global">
     <%= render partial: "layouts/users/navbar"%>
     <%= render "layouts/users/flash_messages" %>
+    <br>
+    <br>
+    <br>
     <%= yield %>
     <% unless user_signed_in? %>
       <%= render partial: 'users/sessions/new' %>
+      <%= render partial: 'users/registrations/new' %>
     <% end %>
     <%= render partial: "layouts/users/footer"%>
     </div>
