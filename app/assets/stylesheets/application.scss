@@ -10,20 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *= require_tree ./components
  *= require_self
  */
-@import "components/*";
-
-/* need it to put my footer at the bottom */
-.global {
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: 100%;
-}
-
-/* for flash message not display to big with modifications above */
-.alert {
-  height: 50px;
-}
