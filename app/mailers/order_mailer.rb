@@ -13,7 +13,7 @@ class OrderMailer < ApplicationMailer
   def admin_order_email(user)
     @user = user
     # @order = order
-    mail(to: user.email,
+    mail(to: "thpnextfever@gmail.com",
          subject: "An order has been placed")
   end
 end
