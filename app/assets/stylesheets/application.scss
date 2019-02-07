@@ -13,3 +13,11 @@
  *= require_tree ./components
  *= require_self
  */
+
+body {
+    font-family: 'Raleway' !important;
+    font-size: 19px !important;
+    line-height: 26px;
+    color: #818181;
+    font-weight: 400;
+}
