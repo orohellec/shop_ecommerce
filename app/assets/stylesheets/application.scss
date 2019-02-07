@@ -10,7 +10,22 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *= require_tree ./components
  *= require_self
  */
-@import "components/*";
+
+/* very useful for the footer */
+ *{
+   margin:0;
+   padding:0;
+ }
+
+ html, body {
+   height: 100%;
+ }
+
+ #global {
+   min-height:100%;
+   margin: 0 auto;
+   position: relative;
+ }

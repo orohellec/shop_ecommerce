@@ -1,0 +1,29 @@
+@media all and (min-device-width: 1px) and (max-device-width: 544px) {
+  footer {
+    font-size: 50px;
+  }
+}
+
+@media all and (min-device-width: 545px) and (max-device-width: 768px) {
+  footer {
+    font-size: 30px;
+  }
+}
+
+@media all and (min-device-width: 769px) and (max-device-width: 992px) {
+  footer {
+    font-size: 20px;
+  }
+}
+
+@media all and (min-device-width: 993px) {
+  footer {
+    font-size: 20px;
+  }
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0; left: 0; right: 0;
+}

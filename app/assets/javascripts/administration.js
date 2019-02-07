@@ -14,7 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require app
+//= require admin_app
 //= require charts
 //= require forms
 //= require maps
