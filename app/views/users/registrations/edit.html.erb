@@ -1,5 +1,5 @@
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Orders')">Historique des commandes</button>
+  <button class="tablinks" onclick="openCity(event, 'Orders')" id="defaultOpen">Historique des commandes</button>
   <button class="tablinks" onclick="openCity(event, 'Edit')">Modifier ses informations</button>
 </div>
 
@@ -95,3 +95,8 @@
 
 <%= link_to "Back", :back %>
 </div>
+
+<script>
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
