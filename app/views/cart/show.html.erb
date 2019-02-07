@@ -20,15 +20,15 @@
         <%= cart_item.item.title %>
         </div>
       </td>
-      <td><%= cart_item.item.original_price %></td>
+      <td><%= number_to_currency(cart_item.item.original_price) %></td>
       <td>
         <%= form_with(url: cart_item_path(cart_item), method: :patch) do |form| %>
-        <%= form.text_field :quantity, placeholder: "#{cart_item.quantity}" %>
+        <%= form.number_field :quantity, step: 1, placeholder: "#{cart_item.quantity}" %>
         <%= form.submit %>
         <% end %>
       </td>
       <td><%= button_to "Supprimer du panier", cart_item_path(cart_item), :method=>:delete, :remote => true %></td>
-      <td><%= cart_item.subtotal %></td>
+      <td><%= number_to_currency(cart_item.subtotal) %></td>
     </tr>
     <% end %>
     <tr>
@@ -36,7 +36,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td><%= current_user.current_cart.total_price %> € TTC</td>
+      <td><%= number_to_currency(current_user.current_cart.total_price) %> TTC</td>
     </tr>
   </tbody>
 </table>

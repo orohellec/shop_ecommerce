@@ -41,12 +41,12 @@
                   <h4 class="card-title">
                     <%= link_to item.title, item_path(item.id) %>
                   </h4>
-                  <h5><%= item.original_price %> €</h5>
+                  <h5><%= number_to_currency(item.original_price) %></h5>
                   <p class="card-text"><%= item.description %></p>
                 </div>
               </div>
             </div>
-          <% end %>  
+          <% end %>
         </div>
 
       </div>
