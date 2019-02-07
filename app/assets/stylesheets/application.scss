@@ -21,3 +21,19 @@ body {
     color: #818181;
     font-weight: 400;
 }
+
+/* very useful for the footer */
+ *{
+   margin:0;
+   padding:0;
+ }
+
+ html, body {
+   height: 100%;
+ }
+
+ #global {
+   min-height:100%;
+   margin: 0 auto;
+   position: relative;
+ }

@@ -1,8 +1,7 @@
-<div class="charge_wrapper">
-  <h2>Merci !</h2><br>
-
-     Vous avez payé, <strong>$<%= @price %></strong><br><br>
-
-    <%=button_to "VOS COMMANDES", edit_user_registration_path, method: :get, class:"charge-button" %>
-
+<div class="container charge_wrapper" id="container_after_pay">
+  <div class="charge_wrapper">
+    <h2>Merci !</h2>
+     Vous avez payé, <strong>€<%= @price %></strong><br><br>
+    <%=button_to "VOS COMMANDES", edit_user_registration_path, method: :get, class:"charge-button btn btn-primary" %>
+  </div>
 </div>
