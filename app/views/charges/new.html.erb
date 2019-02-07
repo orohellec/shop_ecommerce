@@ -1,3 +1,4 @@
+<div class="container" id="container_total_to_pay">
 <%= form_tag charges_path do %>
   <article>
     <% if flash[:error].present? %>
@@ -6,7 +7,7 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $<%= @price %></span>
+      <span>Total à payer: <%= @price %> €</span>
     </label>
   </article>
 
@@ -16,3 +17,4 @@
           data-amount="<%= @amount %>"
           data-locale="auto"></script>
 <% end %>
+</div>
