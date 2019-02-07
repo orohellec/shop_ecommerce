@@ -4,8 +4,6 @@ class CartController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    return unless current_user.current_cart.nil?
-
-    current_user.create_cart
+    current_user.create_cart unless current_user.current_cart.nil?
   end
 end
