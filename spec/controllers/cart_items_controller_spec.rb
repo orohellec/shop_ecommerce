@@ -36,4 +36,38 @@ RSpec.describe CartItemsController, type: :controller do
       expect(@user.current_cart.items.include?(@item)).to eq(false)
     end
   end
+
+  describe "PATCH #update" do
+    before do
+      @user = create(:user)
+      sign_in @user
+      @item = create(:item)
+      @user.current_cart.add_product(@item)
+    end
+
+    it "doesn't save if param is nil" do
+      get :update, params: { quantity: nil, id: CartItem.find_by(item_id: @item.id) }
+      expect(CartItem.find_by(item_id: @item.id).quantity).to eq(1)
+    end
+
+    it "doesn't save if param is not numerical" do
+      get :update, params: { quantity: "salut ma gueule", id: CartItem.find_by(item_id: @item.id) }
+      expect(response).to redirect_to(cart_path)
+    end
+
+    it "doesn't save if param is a float" do
+      get :update, params: { quantity: 0.666, id: CartItem.find_by(item_id: @item.id) }
+      expect(response).to redirect_to(cart_path)
+    end
+
+    it "deletes item if quantity is 0" do
+      get :update, params: { quantity: 0, id: CartItem.find_by(item_id: @item.id) }
+      expect(@user.current_cart.items.include?(@item)).to eq(false)
+    end
+
+    it "updates quantity if param is an integer" do
+      get :update, params: { quantity: 666, id: CartItem.find_by(item_id: @item.id) }
+      expect(CartItem.find_by(item_id: @item.id).quantity).to eq(666)
+    end
+  end
 end

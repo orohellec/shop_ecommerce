@@ -28,12 +28,14 @@ class CartItemsController < ApplicationController
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.quantity = params[:quantity]
-    if @cart_item.quantity.zero?
-      @cart_item.destroy.save
-      flash[:notice] = "Produit supprimé du panier"
-    elsif !@cart_item.quantity.nil?
-      @cart_item.save
-      flash[:notice] = "Quantité changée à #{@cart_item.quantity}"
+    if !@cart_item.quantity.nil?
+      if @cart_item.quantity.zero?
+        @cart_item.destroy.save
+        flash[:notice] = "Produit supprimé du panier"
+      elsif !@cart_item.quantity.nil?
+        @cart_item.save
+        flash[:notice] = "Quantité changée à #{@cart_item.quantity}"
+      end
     end
     redirect_to cart_path
   end
