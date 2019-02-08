@@ -15,6 +15,12 @@
 require 'rails_helper'
 
 RSpec.describe CartItem, type: :model do
+  describe 'Factory' do
+    it "has a valid factory" do
+      expect(build(:cart_item)).to be_valid
+    end
+  end
+
   describe 'Model instantiation' do
     subject(:new_cart_item) { described_class.create }
 
@@ -30,6 +36,16 @@ RSpec.describe CartItem, type: :model do
     describe 'Associations' do
       it { is_expected.to belong_to(:cart) }
       it { is_expected.to belong_to(:item) }
+    end
+  end
+
+  describe 'Methods' do
+    describe 'subtotal' do
+      item = FactoryBot.build(:item, original_price: 10)
+      cart_item = FactoryBot.build(:cart_item, item: item, quantity: 2)
+      it "result expected" do
+        expect(cart_item.subtotal).to eq(20)
+      end
     end
   end
 end
