@@ -1,102 +1,120 @@
-<div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Orders')" id="defaultOpen">Historique des commandes</button>
-  <button class="tablinks" onclick="openCity(event, 'Edit')">Modifier ses informations</button>
-</div>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
 
-<div id="Orders" class="tabcontent">
-<h2>Commandes en cours:</h2>
-<ul>
-  <% if current_user.carts.find_by(status: 1).nil? %>
-    <li>Vous n'avez pas de commande en cours</li>
-  <% else %>
-    <% current_user.carts.where(status: 1).each do |order| %>
-      <li>Order N°<%= order.id %></li>
+<div class="container">
+  <ul class="nav nav-pills" style="justify-content: center;">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="pill" href="#orders">Historique de mes commandes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="pill" href="#info">Modifier mes informations</a>
+    </li>
+  </ul>
+  <br>
+
+  <div class="tab-content">
+
+    <div id="orders" class="tab-pane fade show active">
       <ul>
-        <% order.cart_items.each do |item| %>
-          <li> <%= item.quantity %> x <%= item.item.title %>: <%= item.subtotal %> €</li>
+        <% if current_user.carts.find_by(status: 1).nil? %>
+          <li>Vous n'avez pas de commande en cours</li>
+        <% else %>
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card flex-fill">
+                <table class="table table-striped my-0">
+                  <thead>
+                    <tr>
+                      <th>Numéro de commande</th>
+                      <th>Date et heure</th>
+                      <th>Prix total</th>
+                      <th>Etat</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% current_user.carts.where(status: 1).each do |order| %>
+                      <tr>
+                        <td><%= order.id %></td>
+                        <td>le <%= order.updated_at.strftime("%d/%m/%Y") %> à
+                        <%= order.updated_at.strftime("%H:%M:%S") %></td>
+                        <td><%= number_to_currency(order.total_price) %></td>
+                        <td><% if order.paid? %>
+                          Non traitée
+                        <% else %>
+                          Traitée
+                        <% end%>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         <% end %>
-      <b>Total: <%= order.total_price %> €</b>
-      </ul>
-    <% end %>
-  <% end %>
-</ul>
 
-<h2>Commandes terminées:</h2>
-<ul>
-  <% if current_user.carts.find_by(status: 2).nil? %>
-    <li>Vous n'avez pas de commande terminée</li>
-  <% else %>
-    <% current_user.carts.where(status: 2).each do |order| %>
-      <li>Order N°<%= order.id %></li>
-      <ul>
-        <% order.cart_items.each do |item| %>
-          <li> <%= item.quantity %> x <%= item.item.title %>: <%= item.subtotal %> €</li>
+      </ul>
+    </div>
+
+    <div id="info" class="tab-pane fade">
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+          <b><%= f.label :email %></b><br>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div><br>
+
+        <div class="field">
+          <b><%= f.label :first_name, "Prénom" %></b><br>
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "First name" %>
+        </div><br>
+
+        <div class="field">
+          <b><%= f.label :last_name, "Nom" %></b><br>
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "Last name" %>
+        </div><br>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
-      <b>Total: <%= order.total_price %> €</b>
-      </ul>
-    <% end %>
-  <% end %>
-</ul>
+
+        <div class="field">
+          <b><%= f.label :password, "Nouveau mot de passe" %></b> <i>(Laissez blanc si vous ne voulez pas le changer)</i><br>
+          <%= f.password_field :password, autocomplete: "Mot de passe" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+        </div><br>
+
+        <div class="field">
+          <b><%= f.label :password_confirmation, "Confirmer le nouveau mot de passe" %></b><br />
+          <%= f.password_field :password_confirmation, autocomplete: "Mot de passe" %>
+        </div><br>
+
+        <div class="field">
+          <b><%= f.label :current_password, "Mot de passe actuel" %></b> <i>(Nécessaire pour prendre en compte les changements)</i><br />
+          <%= f.password_field :current_password, autocomplete: "Mot de passe" %>
+        </div>
+
+        <br>
+
+        <div class="actions">
+          <%= f.submit "Actualiser", class: "btn btn-info" %>
+        </div>
+      <% end %>
+
+      <br><br>
+
+      <h5><b>Pas satisfait ? :(</b></h5><br>
+
+      <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr ?" }, method: :delete, class: "btn btn-danger" %><br>
+
+    </div>
+  </div>
 </div>
-
-<div id="Edit" class="tabcontent">
-
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "First name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "Last name" %>
-  </div>
-  
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
-</div>
-
-<script>
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>

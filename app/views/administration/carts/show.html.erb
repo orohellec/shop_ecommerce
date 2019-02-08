@@ -8,7 +8,7 @@
           </div>
           <div class="card-body">
             <div id="introduction">
-              <p>Prix total de la commande : <%= @cart.total_price %> €</p>
+              <p>Prix total de la commande : <%= number_to_currency(@cart.total_price) %></p>
               <p>Date: <%= @cart.created_at.strftime("%d/%m/%Y") %></p>
               <p>Heure: <%= @cart.created_at.strftime("%H:%M:%S") %></p>
               <% if @cart.paid? %>
@@ -37,9 +37,9 @@
                 <tr>
                   <td><%= items.item.id %></td>
                   <td><%= items.item.title %></td>
-                  <td><%= items.item.original_price %> €</td>
+                  <td><%= number_to_currency(items.item.original_price) %></td>
                   <td><%= items.quantity %></td>
-                  <td><%= items.subtotal %> €</td>
+                  <td><%= number_to_currency(items.subtotal) %></td>
                 </tr>
               <% end %>
             </tbody>
