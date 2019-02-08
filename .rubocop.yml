@@ -35,3 +35,6 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'app/controllers/admins/*'
     - 'app/controllers/users/*'
+RSpec/InstanceVariable:
+  Exclude:
+    - 'spec/**/*.rb'

@@ -8,7 +8,7 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li class="nav-item active">
-              <span class="nav-link"><%= current_user.first_name + " " + current_user.last_name %></span></li>
+              <span class="nav-link" style="color:#7cd6be"><%= current_user.first_name + " " + current_user.last_name %></span></li>
             <li class="nav-item active">
               <%= link_to "Se déconnecter", destroy_user_session_path, class: "nav-link", method: :delete %>
             </li>
