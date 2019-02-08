@@ -13,7 +13,8 @@
               <tr>
                 <th>Id</th>
                 <th>Nom du client</th>
-                <th>Date</th>
+                <th>Date de création</th>
+                <th>Prix total</th>
                 <th>Etat</th>
                 <th></th>
               </tr>
@@ -25,13 +26,14 @@
                   <td><%= cart.user.first_name %> <%= cart.user.last_name %></td>
                   <td>le <%= cart.updated_at.strftime("%d/%m/%Y") %> à
                   <%= cart.updated_at.strftime("%H:%M:%S") %></td>
+                  <td><%= number_to_currency(cart.total_price) %></td>
                   <td><% if cart.paid? %>
                     Non traitée
                   <% else %>
                     Traitée
                   <% end%>
                   </td>
-                  <td><%= link_to "voir", administration_cart_path(cart.id) %></td>
+                  <td><%= link_to "Voir la commande", administration_cart_path(cart.id) %></td>
                 </tr>
               <% end %>
             </tbody>

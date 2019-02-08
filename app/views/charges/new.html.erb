@@ -7,7 +7,7 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Total à payer: <%= @price %> €</span>
+      <span>Total à payer: <%= number_to_currency(@price) %></span>
     </label>
   </article>
 
