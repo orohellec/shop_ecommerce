@@ -36,3 +36,36 @@ body {
 .fadein { -webkit-animation:fadein 0.7s; animation:fadein 0.7s }
 @-webkit-keyframes fadein { from {opacity:0} to {opacity:1} }
 @keyframes fadein { from {opacity:0} to {opacity:1} }
+
+.card-link {
+	color: #7cd6be !important;
+	font-weight: bold;
+}
+
+.card-link:hover {
+	text-decoration: underline !important;
+}
+
+.card-text {
+	font-style: italic;
+}
+.card-img-top {
+	width: 348px;
+	height: 348px;
+}
+
+.card.h-100 {
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.card.h-100:hover {
+	box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.card-body {
+	background-color: #f9f9f9;
+	border: none;
+	border-top: 1px solid #e2e2e2;
+}
