@@ -41,13 +41,11 @@ RSpec.describe CartItem, type: :model do
 
   describe 'Methods' do
     describe 'subtotal' do
-      item = FactoryBot.create(:item, original_price: 10)
-      cart_item = FactoryBot.create(:cart_item, item: item, quantity: 2)
+      item = FactoryBot.build(:item, original_price: 10)
+      cart_item = FactoryBot.build(:cart_item, item: item, quantity: 2)
       it "result expected" do
         expect(cart_item.subtotal).to eq(20)
       end
     end
   end
 end
-
-CartItem.delete_all
