@@ -19,7 +19,7 @@ RSpec.describe CartController, type: :controller do
       expect(response).to have_http_status(:success)
     end
 
-    it "returns http 209" do
+    it "returns http 209 for visitors" do
       get :show
       expect(response).to have_http_status(:found)
     end
