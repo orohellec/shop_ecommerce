@@ -1,45 +1,47 @@
 <div class="fadein">
-<div class="container">
-<h2>Mon panier</h2><br>
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Produit</th>
-      <th scope="col">Prix</th>
-      <th scope="col">Quantité</th>
-      <th></th>
-      <th scope="col">Sous-Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% current_user.current_cart.cart_items.each_with_index do |cart_item, i| %>
-    <tr>
-      <td>
-        <div id="cart-show-product">
-        <%= image_tag cart_item.item.image_url, width: 200, height: 200 %>
-        <%= cart_item.item.title %>
-        </div>
-      </td>
-      <td><%= number_to_currency(cart_item.item.original_price) %></td>
-      <td>
-        <%= form_with(url: cart_item_path(cart_item), method: :patch) do |form| %>
-        <%= form.number_field :quantity, step: 1, placeholder: "#{cart_item.quantity}" %>
-        <%= form.submit %>
+  <div class="container">
+    <h2>Mon panier</h2><br>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Produit</th>
+          <th scope="col">Prix</th>
+          <th scope="col">Quantité</th>
+          <th></th>
+          <th scope="col">Sous-Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% current_user.current_cart.cart_items.each_with_index do |cart_item, i| %>
+        <tr>
+          <td>
+            <div id="cart-show-product">
+              <%= image_tag cart_item.item.image_url, width: 200, height: 200 %>
+              <%= cart_item.item.title %>
+            </div>
+          </td>
+          <td><%= number_to_currency(cart_item.item.original_price) %></td>
+          <td>
+            <%= form_with(url: cart_item_path(cart_item), method: :patch) do |form| %>
+            <%= form.number_field :quantity, step: 1, placeholder: "#{cart_item.quantity}" %>
+            <%= form.submit %>
+            <% end %>
+          </td>
+          <td><%= button_to "Supprimer du panier", cart_item_path(cart_item), :method=>:delete, :remote => true %></td>
+          <td><%= number_to_currency(cart_item.subtotal) %></td>
+        </tr>
         <% end %>
-      </td>
-      <td><%= button_to "Supprimer du panier", cart_item_path(cart_item), :method=>:delete, :remote => true %></td>
-      <td><%= number_to_currency(cart_item.subtotal) %></td>
-    </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>Total: </td>
+          <td><%= number_to_currency(current_user.current_cart.total_price) %> TTC</td>
+        </tr>
+      </tbody>
+    </table>
+    <% if current_user.current_cart.items.any? %>
+      <%=link_to "Commander", new_charge_path, class:"checkout-button btn btn-primary pull-right", id: "cart-show-order"%>
     <% end %>
-    <tr>
-      <td>Total: </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><%= number_to_currency(current_user.current_cart.total_price) %> TTC</td>
-    </tr>
-  </tbody>
-</table>
-<%=link_to "Commander", new_charge_path, class:"checkout-button btn btn-primary pull-right", id: "cart-show-order"%>
-</div>
+  </div>
 </div>
