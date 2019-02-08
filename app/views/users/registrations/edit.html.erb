@@ -19,7 +19,7 @@
     <div id="orders" class="tab-pane fade show active">
       <ul>
         <% if current_user.carts.find_by(status: 1).nil? %>
-          <li>Vous n'avez pas de commande en cours</li>
+          <li>Vous n'avez pas encore effectué de commande.</li>
         <% else %>
 
           <div class="row">
@@ -35,7 +35,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <% current_user.carts.where(status: 1).each do |order| %>
+                    <% current_user.carts.where.not(status: "created").each do |order| %>
                       <tr>
                         <td><%= order.id %></td>
                         <td>le <%= order.updated_at.strftime("%d/%m/%Y") %> à
