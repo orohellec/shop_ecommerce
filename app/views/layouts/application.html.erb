@@ -18,8 +18,11 @@
   </head>
 
   <body>
-    <div id="global">
+    <div class="page">
+      <div class="header">
     <%= render partial: "layouts/users/navbar"%>
+      </div>
+      <div class="site-content">
     <%= render "layouts/users/flash_messages" %>
     <br>
     <br>
@@ -29,7 +32,10 @@
       <%= render partial: 'users/sessions/new' %>
       <%= render partial: 'users/registrations/new' %>
     <% end %>
+      </div>
+      <div class="site-footer">
     <%= render partial: "layouts/users/footer"%>
+      </div>
     </div>
   </body>
 </html>

@@ -22,11 +22,16 @@ RSpec.describe Cart, type: :model do
       it { is_expected.to have_db_column(:user_id).of_type(:integer) }
       it { is_expected.to have_db_column(:created_at).of_type(:datetime).with_options(null: false) }
       it { is_expected.to have_db_column(:updated_at).of_type(:datetime).with_options(null: false) }
+      it { is_expected.to have_db_column(:status).of_type(:integer).with_options(default: "created") }
     end
 
     describe 'Associations' do
       it { is_expected.to belong_to(:user) }
       it { is_expected.to have_many(:items) }
+    end
+
+    describe 'enums' do
+      it { is_expected.to define_enum_for(:status).with(%i[created paid processed]) }
     end
   end
 
@@ -51,6 +56,32 @@ RSpec.describe Cart, type: :model do
 
       it 'returns string 40' do
         expect(user.current_cart.total_price).to eq(40)
+      end
+    end
+  end
+
+  describe "add_product" do
+    context 'when this product is not yet in cart' do
+      let(:cart) { create(:cart) }
+
+      before do
+        item = FactoryBot.create(:item)
+        cart.add_product(item)
+      end
+
+      it 'creates new cart_item' do
+        expect(cart.cart_items.count).to eq(1)
+      end
+    end
+
+    context "when the product is already in cart" do
+      let(:cart) { create(:cart) }
+
+      it "updates quantity" do
+        item = FactoryBot.create(:item)
+        cart.add_product(item)
+        cart.add_product(item)
+        expect(cart.cart_items.find_by(item_id: item.id).quantity).to eq(2)
       end
     end
   end

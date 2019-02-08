@@ -7,7 +7,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= @item.title %></h5>
         <p class="card-text">ididizijdizj izdjizjdizjdijzidjiz zjdizdjizjdizidjz zidjzijdizjdizjdiz jzidzi jzidjzidizjdizjdz zidjzidjizdjizj zdjizjdizjdijzidj djzjdizjizjidehuhfizuhzudhuzhdz izdizdizjdizjdizjdiz zidjzijdizjdijzidjiz</p>
-        <%= button_to "Ajouter au panier", cart_items_path(:id => @item), :remote => true, class: "card-link add-to-cart" %>
+        <%= button_to "Ajouter au panier", cart_items_path(:id => @item), :remote => true, class: 'btn btn-outline-primary btn-lg' %>
         <br><%= link_to "retour aux produits", items_path, class: "card-link" %>
       </div>
     </div>

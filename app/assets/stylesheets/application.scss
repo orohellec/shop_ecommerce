@@ -14,18 +14,21 @@
  *= require_self
  */
 
-/* very useful for the footer */
- *{
-   margin:0;
-   padding:0;
- }
+body {
+    font-family: 'Raleway' !important;
+    font-size: 19px !important;
+    line-height: 26px;
+    color: #818181;
+    font-weight: 400;
+    margin: 0;
+}
 
- html, body {
-   height: 100%;
- }
+.page {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
 
- #global {
-   min-height:100%;
-   margin: 0 auto;
-   position: relative;
- }
+.site-content {
+	flex: 1;
+}
