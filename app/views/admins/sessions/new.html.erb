@@ -1,26 +1,40 @@
-<h2>Log in ADMIN</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header text-center">
+      <h4 class="modal-title w-100 font-weight-bold">Connection Admin</h4>
     </div>
-  <% end -%>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="modal-body mx-3">
+      <span class="md-form mb-5">
+        <label data-error="wrong" data-success="right" for="defaultForm-email"></label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">✉</div>
+          </div>
+          <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
+      </span>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+      <div class="md-form mb-4">
+        <label data-error="wrong" data-success="right" for="defaultForm-pass"></label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">🔒</div>
+          </div>
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+        </div>
+      </div>
+      <% if devise_mapping.rememberable? -%>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me , class:"remember-me"%>
+      </div>
+      <% end -%>
+      <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+    </div>
+    <div class="modal-footer d-flex justify-content-center">
+      <%= f.submit "Login", class: 'btn btn-outline-primary btn-lg', onclick: "window.location.href='/';" %>
+    </div>
   </div>
-<% end %>
-
-<%= render "admins/shared/links" %>
+  <% end %>
+</div>
