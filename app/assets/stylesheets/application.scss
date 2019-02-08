@@ -32,3 +32,7 @@ body {
 .site-content {
 	flex: 1;
 }
+
+.fadein { -webkit-animation:fadein 0.7s; animation:fadein 0.7s }
+@-webkit-keyframes fadein { from {opacity:0} to {opacity:1} }
+@keyframes fadein { from {opacity:0} to {opacity:1} }
