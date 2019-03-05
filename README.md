@@ -23,3 +23,5 @@ Projet de boutique ecommerce dans le cadre de la formation thp-next
 * Peut se connecter
 * Peut ajouter, éditer, supprimer un produit
 * Peut visualiser, éditer et supprimer les commandes passées
+
+### Lien de l'application: https://ecommercethp-production.herokuapp.com/
