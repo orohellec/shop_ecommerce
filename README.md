@@ -1,24 +1,25 @@
-# README
+# Boutique ecommerce (THP Next)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Projet de boutique ecommerce dans le cadre de la formation thp-next
 
-Things you may want to cover:
+## Collaborateurs
+* Quentin
+* Charles
+* Olivier
 
-* Ruby version
+## Fonctionnalités de l'application
 
-* System dependencies
+### Visiteur
+* Peut visualiser les produits de la boutique
+* Peut créer un compte utilisateur
 
-* Configuration
+### Utilisateur
+* Peut se connecter
+* Peut visualiser les produits de la boutique
+* Peut ajouter plusieurs produits dans son panier
+* Peut passer commande
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Administrateur
+* Peut se connecter
+* Peut ajouter, éditer, supprimer un produit
+* Peut visualiser, éditer et supprimer les commandes passées
