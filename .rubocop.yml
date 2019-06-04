@@ -35,6 +35,19 @@ Style/ClassAndModuleChildren:
   Exclude:
     - 'app/controllers/admins/*'
     - 'app/controllers/users/*'
+
 RSpec/InstanceVariable:
   Exclude:
+    - 'spec/**/*.rb'
+
+RSpec/ExampleLength:
+    Exclude:
+    - 'spec/**/*.rb'
+
+Lint/AmbiguousBlockAssociation:
+    Exclude:
+    - 'spec/**/*.rb'
+
+RSpec/MultipleExpectations:
+    Exclude:
     - 'spec/**/*.rb'
